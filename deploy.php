@@ -14,14 +14,15 @@ $gitUrl = 'git@bitbucket.org:user/repo.git';
 $gitRepoFolder = '/var/www/domain/public_html/public/repo/.git';
 $targetFolder = '/var/www/domain/public_html/';
 $repoFolder = '/var/www/domain/public_html/public/repo/';
+$branch = 'development';
 
 try{
         print_r('<h1>Beginning Deployment...</h1><br />');
-        exec('git clone -b development '. $gitUrl, $output);
+        exec('git clone -b '. $branch .' '. $gitUrl, $output);
         print_r('<h3>Repository cloned, deleting .git directory</h3><br />');
         exec('rm -rf '.$gitRepoFolder, $output);
         print_r('<h3>Removed .git directory, copying code from temporary location</h3><br />');
-        exec('rsync -a '. $repoFolder . $targetFolder ,$output);
+        exec('rsync -a '. $repoFolder .' '. $targetFolder ,$output);
         print_r('<h3>Copied code from temporary location, removing temporary location</h3><br />');
         exec('rm -rf '. $repoFolder, $output);
         print_r('<h3>Deleted temporary location, fixing permissions...</h3><br />');
