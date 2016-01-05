@@ -17,7 +17,7 @@ chmod 700 /var/www/.ssh/
 chown www-data:www-data /var/www/.ssh
 
 # Generate SSH Key for server to use
-su - www-data -c "ssh-keygen -t rss -b 2048 -N "" –f id_rsa"
+su - www-data -c "ssh-keygen -t rsa -b 2048 -N "" –f id_rsa"
 
 ```
 
